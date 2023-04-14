@@ -15,7 +15,7 @@ export const SlideMenuContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [openSlider, setOpenSlider] = useState(false);
+  const [openSlider, setOpenSlider] = useState(true);
 
   const contextValue: MyContextValue = {
     openSlider,
@@ -30,7 +30,7 @@ export const SlideMenuContextProvider = ({
         }`}
       >
         <div className="flex items-center">
-          <div onClick={() => setOpenSlider(true)}>
+          <div onClick={() => setOpenSlider(false)}>
             <ArrowLeftIcon className="h-6 w-6" />
           </div>
           <span className="text-black font-semibold text-xl ml-4">
