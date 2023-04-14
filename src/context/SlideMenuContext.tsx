@@ -30,7 +30,7 @@ export const SlideMenuContextProvider = ({
         }`}
       >
         <div className="flex items-center">
-          <div onClick={() => setOpenSlider(false)}>
+          <div onClick={() => setOpenSlider(true)}>
             <ArrowLeftIcon className="h-6 w-6" />
           </div>
           <span className="text-black font-semibold text-xl ml-4">
