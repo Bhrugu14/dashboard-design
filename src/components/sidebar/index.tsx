@@ -1,9 +1,12 @@
 import React, { useState } from "react";
-import { IcHelp, Logo, SidebarMenu } from "./constant";
+import { IcHelp, Logo } from "./constant";
 import { useSidebarContext } from "../../context";
 import { Button } from "../button";
+import { routesData } from "../../routes/constant";
+import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
+  const navigate = useNavigate();
   const { sidebarIndex, setSidebarIndex } = useSidebarContext();
   return (
     <div className="w-[17.5%] h-full flex bg-white rounded-lg pt-7 flex-col justify-between">
@@ -17,7 +20,7 @@ export const Sidebar = () => {
           <span className="text-xs ml-2">A. T. Inks</span>
         </div>
         <div className="flex flex-col px-3 w-full">
-          {SidebarMenu.map((i, k) => {
+          {routesData.map((i, k) => {
             const Icon = i.icon;
             return (
               <div
@@ -25,7 +28,10 @@ export const Sidebar = () => {
                 className={`cursor-pointer h-5 flex items-center px-5 py-6 w-full ${
                   sidebarIndex === k && "bg-primaryDull"
                 } rounded-lg`}
-                onClick={() => setSidebarIndex(k)}
+                onClick={() => {
+                  navigate(i.path);
+                  setSidebarIndex(k);
+                }}
               >
                 <Icon
                   height={"20px"}
@@ -40,7 +46,7 @@ export const Sidebar = () => {
                     sidebarIndex === k ? "text-primary" : "text-greyOut"
                   } ml-3`}
                 >
-                  {i.name}
+                  {i.title}
                 </span>
               </div>
             );
